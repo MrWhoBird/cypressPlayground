@@ -7,4 +7,7 @@ module.exports = defineConfig({
     },
     specPattern: 'cypress/integration/examples'
   },
+  env:{
+    url: "https://rahulshettyacademy.com/"
+  }
 });
