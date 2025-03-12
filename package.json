@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cyrun": "./node_modules/.bin/cypress run",
+    "cyrun": "./node_modules/.bin/cypress run --browser chrome --headed",
     "cyopen": "./node_modules/.bin/cypress open"
   },
   "author": "",

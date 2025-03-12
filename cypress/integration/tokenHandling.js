@@ -1,18 +1,19 @@
 /// <reference types="Cypress" />
 
-describe('Mocking playground', function () {
+describe('Token handling', function () {
 
-    it('Mock the response', function () {
+    it('Inject the token', function () {
 
-        cy.LoginAPI().then(function () {
-            //cy.visit("https://rahulshettyacademy.com/client",
+        //set the token
+        cy.LoginAPI().then(() => {
             cy.visit(Cypress.env('url')+'client',
                 {
-                    onBeforeLoad: function (window) {
+                    onBeforeLoad: window => {
                         window.localStorage.setItem('token', Cypress.env('token'))
                     }
                 })
         })
+        //add products to cart
         cy.get('.btn.w-10.rounded').eq(2).click()
         cy.get('.card-body').each(el => {
             el.text().includes('ZARA') ? cy.wrap(el).find('button').contains('Add').click() : true
@@ -25,7 +26,7 @@ describe('Mocking playground', function () {
         })
         cy.contains('Place Order ').click()
         cy.wait(2000)
-        cy.contains('CSV').click()
+        //cy.contains('CSV').click()
     })
 
 })

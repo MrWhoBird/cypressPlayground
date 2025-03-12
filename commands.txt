@@ -29,7 +29,7 @@ configuration - spec pattern - which tests to run
 
 js - var can be redeclared and let cant
 
-1. js course
+
 2. clean up + understand + push
 3. new framework
-4. iframes and windows?
+1. js course

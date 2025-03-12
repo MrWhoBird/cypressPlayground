@@ -1,6 +1,7 @@
 /// <reference types="Cypress" />
 
 describe('Elements Handling', function () {
+
     it('Test website elements', function () {
 
         cy.visit(Cypress.env('url') + 'AutomationPractice/')
@@ -31,6 +32,7 @@ describe('Elements Handling', function () {
         cy.on('window:alert', str => {
             expect(str).to.equal('Hello test1, share this practice page and share your knowledge')
         })
+        cy.get('#confirmbtn').click()
         cy.on("window:confirm", str => {
             expect(str).to.be.equal("Hello , Are you sure you want to confirm?")
         })
@@ -55,6 +57,7 @@ describe('Elements Handling', function () {
 
         //hover
         cy.contains('Top').click({ force: true })
+        cy.url().should('include', 'top')
         cy.get('.mouse-hover-content').invoke('show')
         cy.contains('Top').click()
         cy.url().should('include', 'top')
@@ -70,7 +73,6 @@ describe('Elements Handling', function () {
     it('Test another tab', function () {
 
         cy.visit(Cypress.env('url') + 'AutomationPractice/')
-
         //open new tab
         cy.get('#opentab').then(el => {
             const url = el.prop('href')
@@ -81,5 +83,4 @@ describe('Elements Handling', function () {
             })
         })
     })
-
 })
